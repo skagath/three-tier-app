@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "mysql",
-    user: process.env.DB_USER || "test",
-    password: process.env.DB_PASS || "SK@gath123",
+    host: process.env.DB_HOST || "database-1.cnq48sio8gw0.us-east-1.rds.amazonaws.com",
+    user: process.env.DB_USER || "admin",
+    password: process.env.DB_PASS || "12345678",
     database: process.env.DB_NAME || "mydb",
   });
   
