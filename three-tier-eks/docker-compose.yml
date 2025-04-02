@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  mysql:
+    hostname: mysql
+    image: mysql
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Sk@gath123  # Root password
+      MYSQL_USER: test
+      MYSQL_PASSWORD: Sk@gath123
+      MYSQL_DATABASE: mydb  # The default database to create  
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app_network  # Attach MySQL to the custom network
+
+  backend:
+    build: ./backend
+    container_name: backend_container
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql  # Use service name instead of IP
+      DB_USER: test 
+      DB_PASS: Sk@gath123  
+      DB_NAME: mydb  # Ensure this matches MySQL setup
+      JWT_SECRET: mysecret
+    ports:
+      - "5000:5000"
+    networks:
+      - app_network  # Attach Backend to the custom network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_container
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - app_network  # Attach Frontend to the custom network
+
+volumes:
+  mysql_data:
+    name: mysql_data
+
+networks:
+  app_network:
+    name: app_network 
+    driver: bridge  # Create a custom bridge network
