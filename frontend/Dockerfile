@@ -12,15 +12,16 @@ RUN npm install
 COPY . .
 
 # Build the React app
-RUN npm run build
+# RUN npm run build
+CMD ["npm" ,"start"]
 
 # Use official Apache image
-FROM httpd:alpine
+# FROM httpd:alpine
 
 # Copy the React build files from the previous stage
-COPY --from=build /app/build /usr/local/apache2/htdocs/
+# COPY --from=build /app/build /usr/local/apache2/htdocs/
 
 # Expose port 80 for Apache to serve the React frontend
-EXPOSE 80
+# EXPOSE 80
 
 # Apache will automatically serve files from /usr/local/apache2/htdocs/
