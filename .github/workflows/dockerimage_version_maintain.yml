@@ -110,7 +110,7 @@ jobs:
         id: download-client-task
         run: |
           aws ecs describe-task-definition \
-            --task-definition ui_module \
+            --task-definition ui_module-dev \
             --region us-east-1 \
             --query "taskDefinition" > react-task-definition.json
 
@@ -118,7 +118,7 @@ jobs:
         id: download-server-task
         run: |
           aws ecs describe-task-definition \
-            --task-definition agent \
+            --task-definition agent-dev \
             --region us-east-1 \
             --query "taskDefinition" > backend-task-definition.json
 
