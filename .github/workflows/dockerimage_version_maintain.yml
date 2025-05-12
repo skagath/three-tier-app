@@ -103,7 +103,7 @@ jobs:
           docker push 490004655425.dkr.ecr.us-east-1.amazonaws.com/dev/ui_module_dev:${{ env.NEW_CLIENT_VERSION }}
 
           # Tag and push server image
-          docker tag server:latest 490004655425.dkr.ecr.us-east-1.amazonaws.com/dev/api_agent_dev:${{ env.NEW_SERVER_VERSION }}
+          docker tag test-backend 490004655425.dkr.ecr.us-east-1.amazonaws.com/dev/api_agent_dev:${{ env.NEW_SERVER_VERSION }}
           docker push 490004655425.dkr.ecr.us-east-1.amazonaws.com/dev/api_agent_dev:${{ env.NEW_SERVER_VERSION }}
 
       - name: Download Client task definition
