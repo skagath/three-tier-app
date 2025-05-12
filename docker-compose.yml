@@ -21,6 +21,7 @@ services:
   backend:
     build: ./backend
     container_name: backend_container
+    image: test-backend
     restart: always
     depends_on:
       - mysql
@@ -31,13 +32,14 @@ services:
       DB_NAME: mydb  # Ensure this matches MySQL setup
       JWT_SECRET: mysecret
     ports:
-      - "5000:5000"
+      - "8000:5000"
     networks:
       - app_network  # Attach Backend to the custom network
 
   frontend:
     build: ./frontend
     container_name: frontend_container
+    image: test-frontend
     restart: always
     depends_on:
       - backend
