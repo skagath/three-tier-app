@@ -33,7 +33,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::490004655425:role/test-oidc
           role-session-name: githuboidconnect
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v3
